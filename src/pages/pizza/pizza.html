@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar color="laranja">
+    <ion-title>Estatísticas</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons start>
+      <button ion-button icon only (click)="openCadastro()">
+          
+        <ion-icon color="#019386" class="fa-money"></ion-icon>
+
+      </button>
+
+      <button ion-button icon only (click)="openGraficoBar()">
+          
+        <ion-icon color="#019386" class="fa-bar-chart"></ion-icon>
+
+      </button>
+
+      <button ion-button icon only (click)="openGraficoDonout()">
+          
+        <ion-icon color="#019386" class="fa-pie-chart"></ion-icon>
+
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+
+  <ion-card>
+
+   
+    <ion-card-header *ngIf="total_g == '0'">
+      Nenhuma movimentação ...
+    </ion-card-header>
+
+    <ion-card-header *ngIf="total_g > '0'">
+     Fluxo de Caixa
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #pieCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <span class="tamanho" item-end> {{total_r | currency : 'BRL'}} </span>
+      <ion-icon class="verde" name="square" item-start></ion-icon>
+    </ion-item>
+    <ion-item>
+     
+      <span class="tamanho" item-end> {{total_d | currency : 'BRL'}} </span>
+
+      <ion-icon class="vermelho" name="square" item-start></ion-icon>
+      
+    </ion-item>
+
+    <ion-item>
+      <span class="tamanho" item-end> {{total_g | currency : 'BRL'}} </span>
+      <ion-icon class="azul" name="square" item-start></ion-icon>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

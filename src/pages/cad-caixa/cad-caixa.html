@@ -1,0 +1,84 @@
+<ion-header >
+  <ion-navbar color="laranja" >
+    <ion-title>Fluxo de Caixa</ion-title>
+    <ion-buttons start>
+      <button ion-button icon only (click)="cadastrar()">
+          
+        <ion-icon color="#019386" name="checkmark"></ion-icon>
+
+      </button>
+
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+
+    
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select [(ngModel)]="categoria_id">
+          <ion-option *ngFor="let item of categorias" value="{{item.id}}">{{item.descricao}}</ion-option>
+        
+         
+        </ion-select>
+      </ion-item>
+  
+
+      <ion-item>
+        <ion-label>Forma de Pagamento</ion-label>
+        <ion-select [(ngModel)]="pagamento_id">
+          <ion-option *ngFor="let item of pagamentos" value="{{item.id}}">{{item.descricao}}</ion-option>
+          
+         
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" placeholder="R$" [(ngModel)]="valor" [brmasker]="{money: true, decimalCaracter: '.', decimal: '2'}"  ></ion-input>
+        
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Data de Pagamento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="data_pagamento"></ion-datetime>
+      </ion-item>
+
+      <ion-list radio-group [(ngModel)]="pago">
+
+      <div style="margin-left:7px; margin-top: 20px; padding: 10px; text-align: center; background-color: #a8a8a85d;">Status</div>
+      
+        <ion-item>
+          <ion-label>Pago</ion-label>
+          <ion-radio color="secondary" value="1"></ion-radio>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Pendente</ion-label>
+          <ion-radio color="danger" value="0"></ion-radio>
+        </ion-item>
+      
+      </ion-list>
+
+      <ion-list radio-group [(ngModel)]="status">
+
+        <div style="margin-left:7px; margin-top: 20px; padding: 10px; text-align: center; background-color: #a8a8a85d;">Entra / Saida</div>
+        
+          <ion-item>
+            <ion-label>Receita</ion-label>
+            <ion-radio value="1"></ion-radio>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label>Despesas</ion-label>
+            <ion-radio color="danger" value="0"></ion-radio>
+          </ion-item>
+        
+        </ion-list>
+
+  </ion-list>
+
+</ion-content>
